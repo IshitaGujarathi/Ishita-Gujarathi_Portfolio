@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  background-color: #f2eee3;
+  color: #1b1912;
+  font-family: "IBM Plex Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(178, 78, 44, 0.25);
+  color: #1b1912;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #b8ae90;
+  border-radius: 999px;
+}
+
+*:focus-visible {
+  outline: 2px solid #b24e2c;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+@layer components {
+  .shell {
+    @apply mx-auto w-full max-w-content px-6 sm:px-9 lg:px-12;
+  }
+
+  .kicker {
+    @apply font-mono text-[12px] tracking-[0.14em] uppercase text-rust;
+  }
+
+  .kicker-invert {
+    @apply font-mono text-[12px] tracking-[0.14em] uppercase text-rust-bright;
+  }
+
+  .btn {
+    @apply inline-flex items-center gap-2.5 font-mono text-[13px] tracking-[0.02em] uppercase px-5 py-3 transition-all duration-200;
+  }
+  .btn .btn-arrow {
+    @apply transition-transform duration-200;
+  }
+  .btn:hover .btn-arrow {
+    transform: translateX(4px);
+  }
+
+  .btn-solid {
+    @apply btn bg-ink text-paper border border-ink hover:bg-transparent hover:text-ink;
+  }
+  .btn-solid-invert {
+    @apply btn bg-bone text-void border border-bone hover:bg-transparent hover:text-bone;
+  }
+  .btn-outline {
+    @apply btn bg-transparent text-ink border border-ink/30 hover:border-ink;
+  }
+  .btn-outline-invert {
+    @apply btn bg-transparent text-bone border border-bone/25 hover:border-bone/70;
+  }
+
+  .tag {
+    @apply inline-flex items-center font-mono text-[11.5px] tracking-wide text-ink-muted border border-ink/[0.15] px-2.5 py-1;
+  }
+  .tag-invert {
+    @apply inline-flex items-center font-mono text-[11.5px] tracking-wide text-bone-muted border border-bone/[0.15] px-2.5 py-1;
+  }
+
+  .stamp {
+    @apply inline-flex items-center gap-1.5 font-mono text-[11px] tracking-[0.1em] uppercase border border-rust/50 text-rust px-2.5 py-1;
+  }
+  .stamp-invert {
+    @apply inline-flex items-center gap-1.5 font-mono text-[11px] tracking-[0.1em] uppercase border border-rust-bright/50 text-rust-bright px-2.5 py-1;
+  }
+}
+
+.cursor-block {
+  display: inline-block;
+  width: 0.55em;
+  height: 1em;
+  background: currentColor;
+  vertical-align: -0.15em;
+}
